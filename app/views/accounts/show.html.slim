@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @account.name
+p
+  strong Description:
+  = @account.description
+p
+  strong Admin email:
+  = @account.admin_email
+p
+  strong Disabled:
+  = @account.disabled
+
+= link_to 'Edit', edit_account_path(@account)
+'|
+= link_to 'Back', accounts_path

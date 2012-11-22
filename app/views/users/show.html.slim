@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Account:
+  = @user.account
+p
+  strong User email:
+  = @user.user_email
+p
+  strong User access code:
+  = @user.user_access_code
+p
+  strong Custom access code:
+  = @user.custom_access_code
+p
+  strong Display name:
+  = @user.display_name
+p
+  strong Time zone:
+  = @user.time_zone
+p
+  strong Host privileges:
+  = @user.host_privileges
+
+= link_to 'Edit', edit_user_path(@user)
+'|
+= link_to 'Back', users_path

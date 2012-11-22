@@ -1,0 +1,27 @@
+h1 Listing sessions
+
+table
+  tr
+    th Account
+    th Host
+    th Scheduled session
+    th Start datetime
+    th End datetime
+    th
+    th
+    th
+
+  - @sessions.each do |session|
+    tr
+      td = session.account
+      td = session.host_id
+      td = session.scheduled_session
+      td = session.start_datetime
+      td = session.end_datetime
+      td = link_to 'Show', session
+      td = link_to 'Edit', edit_session_path(session)
+      td = link_to 'Destroy', session, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New Session', new_session_path

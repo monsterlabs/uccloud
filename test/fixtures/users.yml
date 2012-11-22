@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account: 
+  user_email: MyString
+  user_access_code: MyString
+  custom_access_code: false
+  display_name: MyString
+  time_zone: MyString
+  host_privileges: false
+
+two:
+  account: 
+  user_email: MyString
+  user_access_code: MyString
+  custom_access_code: false
+  display_name: MyString
+  time_zone: MyString
+  host_privileges: false

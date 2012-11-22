@@ -1,0 +1,31 @@
+h1 Listing users
+
+table
+  tr
+    th Account
+    th User email
+    th User access code
+    th Custom access code
+    th Display name
+    th Time zone
+    th Host privileges
+    th
+    th
+    th
+
+  - @users.each do |user|
+    tr
+      td = user.account
+      td = user.user_email
+      td = user.user_access_code
+      td = user.custom_access_code
+      td = user.display_name
+      td = user.time_zone
+      td = user.host_privileges
+      td = link_to 'Show', user
+      td = link_to 'Edit', edit_user_path(user)
+      td = link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+
+br
+
+= link_to 'New User', new_user_path

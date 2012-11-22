@@ -1,0 +1,12 @@
+= form_for @invitee do |f|
+  - if @invitee.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@invitee.errors.count, "error")} prohibited this invitee from being saved:"
+      ul
+        - @invitee.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :session
+    = f.text_field :session
+  .actions = f.submit 'Save'

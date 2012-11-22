@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account: 
+  host_id: 
+  scheduled_session: false
+  start_datetime: 2012-11-22 10:02:27
+  end_datetime: 2012-11-22 10:02:27
+
+two:
+  account: 
+  host_id: 
+  scheduled_session: false
+  start_datetime: 2012-11-22 10:02:27
+  end_datetime: 2012-11-22 10:02:27

@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Account:
+  = @session.account
+p
+  strong Host:
+  = @session.host_id
+p
+  strong Scheduled session:
+  = @session.scheduled_session
+p
+  strong Start datetime:
+  = @session.start_datetime
+p
+  strong End datetime:
+  = @session.end_datetime
+
+= link_to 'Edit', edit_session_path(@session)
+'|
+= link_to 'Back', sessions_path
