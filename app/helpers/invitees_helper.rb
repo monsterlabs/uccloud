@@ -1,2 +1,0 @@
-module InviteesHelper
-end

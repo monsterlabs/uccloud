@@ -2,6 +2,7 @@ class CreateInvitees < ActiveRecord::Migration
   def change
     create_table :invitees do |t|
       t.references :session
+      t.boolean :host
 
       t.timestamps
     end
