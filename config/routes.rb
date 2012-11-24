@@ -1,11 +1,11 @@
 Uccloud::Application.routes.draw do
-  resources :accounts
-
   resources :invitees
 
   resources :sessions
 
   resources :users
+
+  resources :accounts
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,11 +52,11 @@ Uccloud::Application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
+  #   en
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'users#index'
 
   # See how all your routes lay out with "rake routes"
 

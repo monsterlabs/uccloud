@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Uccloud
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+    section.main
+      header
+        = image_tag "logo.png"
+        .description On-demand Enterprise-grade Video Collaboration – Anyone, Anywhere, Anytime
+      section
+        nav
+        .content
+          = yield
+      footer
+        .powered
+          = image_tag "powered.png"
+        .copyright 2012, POLYCOM, INC
+
