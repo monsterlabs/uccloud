@@ -20,6 +20,10 @@ set :branch, "#{ENV['branch'] || 'master'}"
 
 # Deploy config
 set :rails_env,  "production"
+set :deploy_via, :copy
+set :copy_cache, true
+set :copy_compression, :gzip
+set :copy_exclude, [".git/*"]
 set :keep_releases, 5
 
 # Callbacks after deploy:setup
@@ -27,7 +31,6 @@ before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
 
 # Callbacks after deploy:restart
-before "deploy:restart", "deploy:passenger_install"
 after "deploy:restart", "deploy:cleanup"
 
 namespace :deploy do
