@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20121124175101) do
 
   create_table "users", :force => true do |t|
     t.integer  "account_id"
-    t.string   "user_email"
+    t.string   "email"
     t.string   "user_access_code"
     t.boolean  "custom_access_code", :default => false
     t.string   "display_name"

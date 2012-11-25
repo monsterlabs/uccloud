@@ -2,14 +2,7 @@ Uccloud::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-
-  resources :invitees
-
-  resources :sessions
-
-  resources :users
-
-  resources :accounts
+  devise_for :users, encryptor: :plain
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -37,6 +30,12 @@ Uccloud::Application.routes.draw do
   #     end
   #   end
 
+     resources :accounts do
+       collection do
+         get 'my_access_code'
+       end
+     end
+
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
@@ -60,7 +59,7 @@ Uccloud::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'users#index'
+  root :to => 'accounts#sessions'
 
   # See how all your routes lay out with "rake routes"
 

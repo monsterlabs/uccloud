@@ -5,6 +5,7 @@ gem 'rails', '3.2.9'
 gem 'sqlite3'
 gem "slim-rails"
 gem 'activeadmin'
+gem 'devise-encryptable'
 gem "meta_search",    '>= 1.1.0.pre'
 gem 'jquery-rails'
 gem 'passenger'

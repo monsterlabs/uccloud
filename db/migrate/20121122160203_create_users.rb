@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.references :account
-      t.string :user_email
+      t.string :email
       t.string :user_access_code
       t.boolean :custom_access_code, default: false
       t.string :display_name
