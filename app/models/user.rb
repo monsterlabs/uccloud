@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   belongs_to :account
   attr_accessible :custom_access_code, :display_name, :host_privileges, :time_zone, :user_access_code, :email
 
-  devise :database_authenticatable, :registerable
+  devise :database_authenticatable, :registerable,:encryptable, :encryptor => :plain
 
   validates_uniqueness_of :email
   validates_uniqueness_of :user_access_code
