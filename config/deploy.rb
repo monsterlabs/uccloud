@@ -31,6 +31,7 @@ before 'deploy:setup', 'rvm:install_rvm'
 before 'deploy:setup', 'rvm:install_ruby'
 
 # Callbacks after deploy:restart
+after "bundle:install", "deploy:migrate"
 after "deploy:restart", "deploy:cleanup"
 
 namespace :deploy do
