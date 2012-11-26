@@ -32,7 +32,10 @@ Uccloud::Application.routes.draw do
 
      resources :accounts do
        collection do
-         get 'my_access_code'
+         get 'my_access_code', as: 'my_access_code'
+         get 'advantages', as: 'advantages'
+         get 'join', as: 'join'
+         get 'faq', as: 'faq'
        end
      end
 
@@ -59,7 +62,7 @@ Uccloud::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'accounts#sessions'
+  root :to => 'accounts#my_access_code'
 
   # See how all your routes lay out with "rake routes"
 

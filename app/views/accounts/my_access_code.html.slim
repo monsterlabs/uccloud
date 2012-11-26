@@ -1,0 +1,16 @@
+.first
+  h1 1. Enter your email addresses.
+
+.second
+
+  h1 2. Set your personal access code.
+  = form_for(current_user, as: "user", url: user_registration_path, method: "put") do |f|
+    = f.label :password, "Access code:"
+    = f.text_field :password
+
+    div
+      = f.submit "Save"
+  div
+    | Personal access codes must be 10 digit numbers.
+    br
+    | Tip: Choose a personal access code that is easy to remember – for example, one of your phone numbers.

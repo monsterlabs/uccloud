@@ -1,3 +1,9 @@
+@import "compass/css3";
+
+$base-grey: #d5dde4;
+$base-blue: #55a7eb;
+
+
 body {
   margin: 0px;
 }
@@ -9,18 +15,79 @@ section.main {
   border: solid #000 2px;
 
   header {
-    background-color: #d5dde4;
-    color: #55a7eb;
-    border-bottom: solid  #55a7eb 2px;
+    background-color: $base-grey;
+    color: $base-blue;
+    border-bottom: solid  $base-blue 2px;
 
     .description {
       padding-left: 20px;
       padding-bottom: 10px;
     }
+    .logout {
+      float: right;
+      border-radius: 5px;
+      border: solid 2px;
+      background-color: white;
+      padding: 5px;
+      margin: 5px;
+      a {
+        text-decoration: none;
+        color: #000;
+        &:hover {
+          color: #000;
+          background-color: white;
+        }
+      }
+    }
+  }
+
+  nav {
+    ul {
+      position:relative;
+      width:100%;
+      height: 1em;
+      margin:0;
+      margin-top: 5px;
+      list-style:none;
+      line-height:1em;
+
+      li {
+        float:left;
+        margin:0;
+        padding:4px;
+        margin-right: 5px;
+        background-color: $base-grey;
+        border: solid $base-blue 2px;
+        @include border-top-radius(5px);
+
+        &.active {
+          background-color: $base-blue;
+          color: #fff;
+
+          a {
+            color: #fff;
+            &:hover {
+              color: #fff;
+              background-color: $base-blue;
+            }
+          }
+        }
+
+        a {
+          color: #000;
+          &:hover {
+            color: #000;
+            background-color: $base-grey;
+          }
+          text-decoration: none;
+        }
+
+      }
+    }
   }
 
   .content {
-    border: solid  #55a7eb 2px;
+    border: solid  $base-blue 2px;
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
@@ -28,15 +95,15 @@ section.main {
 
 
   footer {
-    background-color: #d5dde4;
+    background-color: $base-grey;
     color: #000;
-    border-top: solid  #55a7eb 2px;
+    border-top: solid  $base-blue 2px;
     height: 67px;
     .powered {
       float: left;
       margin: 10px;
       background-color: #fff;
-      border: solid  #55a7eb 2px;
+      border: solid  $base-blue 2px;
       border-radius: 5px;
       padding-top: 3px;
     }

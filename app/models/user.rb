@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_presence_of :user_access_code, :on => :create, :message => "can't be blank"
 
   before_validation(:on => :create) do
-    self.user_access_code = "555-555-" + ("%04d" % User.count) # TODO only 10000 users for prototype
+    self.user_access_code = "555-555-" + ("%04d" % User.count) # TODO only 10000 users for prototype and is flawed as it can break uniqueness of user_access_code
   end
 
   def encrypted_password

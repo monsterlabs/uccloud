@@ -9,13 +9,18 @@ html
   body
     section.main
       header
+        - if current_user
+          .logout
+            = link_to("Log out", destroy_user_session_path, :method => :delete)
         = image_tag "logo.png"
-        .description On-demand Enterprise-grade Video Collaboration – Anyone, Anywhere, Anytime
+        .description On-demand Enterpris  e-grade Video Collaboration – Anyone, Anywhere, Anytime
       section
         nav
+          = render :partial => "common/tabs"
         .content
           = yield
       footer
+       - if current_user
         .powered
           = image_tag "powered.png"
         .copyright 2012, POLYCOM, INC
