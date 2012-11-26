@@ -36,6 +36,7 @@ Uccloud::Application.routes.draw do
          get 'advantages', as: 'advantages'
          get 'join', as: 'join'
          get 'faq', as: 'faq'
+         post 'change_access_code'
        end
      end
 

@@ -4,7 +4,7 @@ ul
   - if current_user
     li *{class: current_page?(controller: "/accounts", action: "join") ? "active" : ""}
       = link_to "Join a Session", join_accounts_path
-    li *{class: current_page?(controller: "/accounts", action: "my_access_code") ? "active" : ""}
+    li *{class: current_page?(controller: "/accounts", action: "my_access_code") || current_page?("/") ? "active" : ""}
       = link_to "My Access info", my_access_code_accounts_path
     li *{class: current_page?(controller: "/accounts", action: "faq") ? "active" : ""}
       = link_to "FAQ", faq_accounts_path

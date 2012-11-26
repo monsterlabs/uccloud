@@ -4,9 +4,9 @@
 .second
 
   h1 2. Set your personal access code.
-  = form_for(current_user, as: "user", url: user_registration_path, method: "put") do |f|
-    = f.label :password, "Access code:"
-    = f.text_field :password
+  = form_for(current_user, as: "user", url: change_access_code_accounts_path, method: 'post') do |f|
+    = f.label :user_access_code, "Access code:"
+    = f.text_field :user_access_code
 
     div
       = f.submit "Save"
