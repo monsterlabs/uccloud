@@ -9,6 +9,7 @@ gem 'devise-encryptable'
 gem "meta_search",    '>= 1.1.0.pre'
 gem 'jquery-rails'
 gem 'passenger'
+gem 'pg'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
