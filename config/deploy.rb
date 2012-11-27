@@ -45,6 +45,6 @@ namespace :deploy do
   end
   desc "Restart passenger"
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "source $HOME/.bash_profile && cd #{deploy_to}/current && rake passenger:restart"
+    run "source $HOME/.bash_profile && cd #{deploy_to}/current && rake passenger:stop && rake passenger:start"
   end
 end
