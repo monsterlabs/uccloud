@@ -1,8 +1,8 @@
 .message
   h4 Want to sign up for a free 30 day trial?
-  h4 All you need to provide is your email address.
+  h4 Just provide your email address to start immediately -- no other information required.
 
-div.signup_form
+div.signup_form.bordered_form
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
     = devise_error_messages!
     = f.email_field :email

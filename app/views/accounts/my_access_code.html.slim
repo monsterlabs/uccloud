@@ -1,15 +1,45 @@
 .first
   h1 1. Enter your email addresses.
+  div.bordered_form
+    = form_tag(change_email_accounts_path, method: "post") do
+      table
+        - current_user.email_addresses.each do |email|
+          tr
+            td = check_box_tag :"emails[]", email.id, false, disabled: email.primary
+            td
+              = email.email
+              - if email.primary
+                b (PRIMARY)
+
+      div
+        = submit_tag "Set as Primary", name: 'primary'
+        = submit_tag "Delete", name: 'delete'
+        = submit_tag "Add new", id: 'new'
+
+    #new_email_dialog*{style: "display: none", title: "Add new email"}
+      = form_tag(add_email_accounts_path, method: "post") do
+        = text_field_tag :email
+        div
+          = submit_tag "Add"
+
+    javascript:
+      $(function() {
+        $( "#new" ).click(function() {
+          $( "#new_email_dialog" ).dialog();
+          return false;
+        });
+      });
 
 .second
 
   h1 2. Set your personal access code.
-  = form_for(current_user, as: "user", url: change_access_code_accounts_path, method: 'post') do |f|
-    = f.label :user_access_code, "Access code:"
-    = f.text_field :user_access_code
+  div.bordered_form
+    = form_for(current_user, as: "user", url: change_access_code_accounts_path, method: 'post') do |f|
+      = f.label :user_access_code, "My access code:"
+      = f.text_field :user_access_code
 
-    div
-      = f.submit "Save"
+      div
+        = f.submit "Save & Update"
   div
     | Personal access codes must be 10 digit numbers.
     br

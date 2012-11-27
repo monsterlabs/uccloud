@@ -11,9 +11,11 @@ html
       header
         - if current_user
           .logout
+            = link_to("Contact Us", "#")
+          .logout
             = link_to("Log out", destroy_user_session_path, :method => :delete)
         = image_tag "logo.png"
-        .description On-demand Enterpris  e-grade Video Collaboration – Anyone, Anywhere, Anytime
+        .description On-demand Enterprise-Grade Video Collaboration – Anyone, Anywhere, Anytime
       section
         nav
           = render :partial => "common/tabs"
@@ -23,5 +25,5 @@ html
        - if current_user
         .powered
           = image_tag "powered.png"
-        .copyright 2012, POLYCOM, INC
+        .copyright &copy; 2012, POLYCOM, INC
 
