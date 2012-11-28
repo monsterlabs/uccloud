@@ -19,20 +19,21 @@ class Mail::Message
   end
 end
 
-redis = Redis.new
+#redis = Redis.new
 
 message = $stdin.read
 mail = Mail.new(message)
 mail_json = mail.to_hash.to_json
-redis.rpush "mail_queue", mail_json
+Resque.remote_enqueue('MailParser', :incoming_mail, message)
+#redis.rpush "mail_queue", mail_json
 
-mail = Mail.new do
-  from     'info@uccld.com'
-  to       'hectoregm@gmail.com'
-  #to       ['hectoregm@gmail.com', 'juanger@gmail.com', 'shanaa@gmail.com']
-  subject  'New email in the queue'
-  body     mail_json
-end
+# mail = Mail.new do
+#   from     'info@uccld.com'
+#   to       'hectoregm@gmail.com'
+#   #to       ['hectoregm@gmail.com', 'juanger@gmail.com', 'shanaa@gmail.com']
+#   subject  'New email in the queue'
+#   body     mail_json
+# end
 
 cmd = "/usr/sbin/sendmail -G -i -r #{ARGV[0]} #{ARGV[1]}"
 stdin, stdouterr, wait_thr = Open3.popen2e(cmd)
@@ -40,6 +41,6 @@ stdin.print(message)
 stdin.close
 stdouterr.close
 
-mail.delivery_method :sendmail
-mail.deliver
+# mail.delivery_method :sendmail
+# mail.deliver
 exit(0)
