@@ -1,6 +1,6 @@
 ongratulations - <host_display_name> <%= @session.host.email %> has invited you to an UC Cloud video collaboration session!
 
-It is scheduled to start <%= @session.now? 'right now' : @session.start_datetime %>(, and end at <end_time> / leave out if not specified).
+It is scheduled to start <%= @session.now? ? 'right now' : @session.start_datetime %>(, and end at <end_time> / leave out if not specified).
 
 ~ Instructions: ~
 At the scheduled time you can easily join this session by either: 
