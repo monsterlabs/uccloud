@@ -3,6 +3,8 @@ require Rails.root.join('lib', 'devise', 'encryptors', 'plain')
 class User < ActiveRecord::Base
   belongs_to :account
   has_many :email_addresses
+  has_many :invitees
+  has_many :sessions, :through => :invitees
   attr_accessible :custom_access_code, :display_name, :host_privileges, :time_zone, :user_access_code, :email
 
   devise :database_authenticatable, :registerable,:encryptable, :encryptor => :plain

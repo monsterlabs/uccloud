@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127013525) do
+ActiveRecord::Schema.define(:version => 20121129131930) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20121127013525) do
     t.boolean  "host"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   add_index "invitees", ["session_id"], :name => "index_invitees_on_session_id"
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20121127013525) do
     t.datetime "end_datetime"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.string   "subject"
   end
 
   add_index "sessions", ["account_id"], :name => "index_sessions_on_account_id"
