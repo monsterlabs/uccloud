@@ -1,0 +1,23 @@
+- api_key = '21842452'
+- api_secret = '2c38ad1aef7f2a59876e4cacd0563696dd0dd5c6'
+- session_id = "1_MX4yMTg0MjQ1Mn4xMjcuMC4wLjF-VGh1IE5vdiAyOSAwOToyOToyOSBQU1QgMjAxMn4wLjIyODI5MTIxfg"
+- ostdk = OpenTok::OpenTokSDK.new api_key, api_secret
+
+#videobox
+
+javascript:
+  var apiKey = #{api_key};
+  var sessionId = "#{session_id}";
+  var token = '#{ostdk.generate_token(session_id: session_id, role: OpenTok::RoleConstants::PUBLISHER, connection_data: "username=#{current_user.email}")}';
+
+  var session;
+
+  TB.addEventListener('exception', exceptionHandler);
+  session = TB.initSession(sessionId);
+
+  //Video chat event listeners
+  session.addEventListener('sessionConnected', sessionConnectedHandler);
+  session.addEventListener('streamCreated', streamCreatedHandler);
+  session.addEventListener('streamDestroyed', streamDestroyedHandler);
+
+  session.connect(apiKey, token);

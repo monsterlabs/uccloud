@@ -11,6 +11,7 @@ gem 'passenger'
 gem 'pg'
 gem 'resque'
 gem 'resque-remote'
+gem 'opentok'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
