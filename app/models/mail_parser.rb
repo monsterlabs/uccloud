@@ -9,6 +9,8 @@ class MailParser
     Rails.logger.debug "CC(Account): #{mail.cc}"
     Rails.logger.debug raw
 
+    User.create(email: mail.from)
+
     mail.to.each do |email|
       unless User.where(email: email).exists?
         User.create(email: email)
