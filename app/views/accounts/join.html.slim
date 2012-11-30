@@ -28,7 +28,7 @@ javascript:
 
   $(function () {
     $("#connect").click (function (e) {
-      if (e.target.innerText === "Connect") {
+      if (e.target.innerText === "CONNECT TO SESSION") {
         var token = '#{ostdk.generate_token(session_id: session_id, role: OpenTok::RoleConstants::PUBLISHER, connection_data: "{\"email\": \"#{current_user.email}\"}")}';
         session.connect(apiKey, token);
         e.target.innerText = "DISCONNECT";
