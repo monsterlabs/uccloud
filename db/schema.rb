@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129131930) do
+ActiveRecord::Schema.define(:version => 20121130060908) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20121129131930) do
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
     t.string   "subject"
+    t.text     "message_body"
   end
 
   add_index "sessions", ["account_id"], :name => "index_sessions_on_account_id"

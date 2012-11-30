@@ -5,7 +5,7 @@ class UnrecognizedInvitee < ActionMailer::Base
     params = {
       from: "UC Cloud <app@uccld.com>",
       to: user.email,
-      subject: "#{@session.subject} - Video Collaboration Details"
+      subject: "#{@session.subject} - Video Collaboration Details",
     }
 
     mail params

@@ -1,16 +1,14 @@
-ongratulations - <host_display_name> <%= @session.host.email %> has invited you to an UC Cloud video collaboration session!
+Congratulations - <%= @session.host.email %> has invited you to an UC Cloud video collaboration session!
 
-It is scheduled to start <%= @session.now? ? 'right now' : @session.start_datetime %>(, and end at <end_time> / leave out if not specified).
+It is scheduled to start <%= @session.now? ? 'now' : @session.start_datetime %>. You can easily join this session by either:
 
-~ Instructions: ~
-At the scheduled time you can easily join this session by either: 
-1. On a personal computer click this link to join from a browser;
+1. On a personal computer click this link to join from a browser.
 
-2. If you have a standards based video endpoint dial the UC Cloud speed dial (“uccld_sip”) and enter your personal access code, which has been temporarily set to <access_code>;
+2. If you have a standards based video endpoint dial the UC Cloud speed dial (“uccld.com”) and enter your personal access code, which has been temporarily set to <%= @user.user_access_code %>.
 
-3. If you’d like to simply call into this session (without video), please dial (408) UCCLOUD (408-822-5683) and enter your personal access code, which has been temporarily set to <access_code>.
+3. If you’d like to simply call into this session (without video), please dial (408) UCCLOUD (408-822-5683) and enter your personal access code, which has been temporarily set to <%= @user.user_access_code %>.
 
-* * *
+
 ~ Helpful Links: ~
 To customize or reset your personal access code please click here. (For more information click Why is this useful?) 
 
@@ -20,12 +18,12 @@ To pre-register an endpoint please click here. (For more information click Why i
 
 To schedule your own UC Cloud video collaboration sessions please click here for a free 30 day trial.
 
+<% if @session.message_body -%>
+~ Original invitation: ~
+<%= @session.message_body %>
 
-* * *
-~ Original invitation: ~ (leave out this section if message_body was blank) 
-<message_body>
 
-* * *
+<% end -%>
 ~ About: ~
 UC Cloud provides On-demand Enterprise-grade Video Collaboration, enabling you to painless collaborate with anyone, anywhere, anytime. 
 
