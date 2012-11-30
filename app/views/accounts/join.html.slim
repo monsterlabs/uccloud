@@ -3,12 +3,18 @@
 - session_id = "1_MX4yMTg0MjQ1Mn4xMjcuMC4wLjF-VGh1IE5vdiAyOSAwOToyOToyOSBQU1QgMjAxMn4wLjIyODI5MTIxfg"
 - ostdk = OpenTok::OpenTokSDK.new api_key, api_secret
 
+#users
+  .header Users
+
+p To join your session click the connect button
+
 #videobox
+
+button#connect Connect
 
 javascript:
   var apiKey = #{api_key};
   var sessionId = "#{session_id}";
-  var token = '#{ostdk.generate_token(session_id: session_id, role: OpenTok::RoleConstants::PUBLISHER, connection_data: "username=#{current_user.email}")}';
 
   var session;
 
@@ -20,4 +26,16 @@ javascript:
   session.addEventListener('streamCreated', streamCreatedHandler);
   session.addEventListener('streamDestroyed', streamDestroyedHandler);
 
-  session.connect(apiKey, token);
+  $(function () {
+    $("#connect").click (function (e) {
+      if (e.target.innerText === "Connect") {
+        var token = '#{ostdk.generate_token(session_id: session_id, role: OpenTok::RoleConstants::PUBLISHER, connection_data: "{\"email\": \"#{current_user.email}\"}")}';
+        session.connect(apiKey, token);
+        e.target.innerText = "Disconnect";
+      } else {
+        session.disconnect();
+        e.target.innerText = "Connect";
+      }
+
+    });
+  });

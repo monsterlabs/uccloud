@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Uccloud
+    title UC Cloud - next generation Video Collaboration
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = javascript_include_tag "http://static.opentok.com/v1.1/js/TB.min.js"
@@ -27,4 +27,6 @@ html
         .powered
           = image_tag "powered.png"
         .copyright &copy; 2012, POLYCOM, INC
+       - else
+        .copyright &copy; 2012, UC CLOUD
 

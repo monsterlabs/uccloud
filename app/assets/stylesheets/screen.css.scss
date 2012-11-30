@@ -98,6 +98,7 @@ section.main {
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
+    min-height: 400px;
   }
 
 
@@ -176,7 +177,7 @@ section.main {
   text-align: center;
 }
 
-input[type="submit"] {
+input[type="submit"], button {
   border: 1px solid $base-blue;
   background: $base-blue;
   color: white;
@@ -185,3 +186,24 @@ input[type="submit"] {
   cursor: pointer;
   @include border-radius(4px);
 }
+
+#users {
+  border: solid 2px $base-blue;
+  @include border-radius(5px);
+  float: right;
+  width: 200px;
+  min-height: 300px;
+
+  .header {
+    background-color: $base-blue;
+    color: #fff;
+    text-align: center;
+  }
+
+  .user {
+    padding: 5px 10px;
+  }
+}
+
+
+

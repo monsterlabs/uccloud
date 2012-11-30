@@ -47,7 +47,12 @@ var videos = 1;
 
 	function streamCreatedHandler(event) {
 		for (var i = 0; i < event.streams.length; i++) {
-			addStream(event.streams[i]);
+
+      var stream = event.streams[i];
+      addStream(stream);
+      var data = $.parseJSON(stream.connection.data);
+
+      $('#users').append('<div class="user">' + data.email + '</div>');
 		}
 	}
 
@@ -76,7 +81,7 @@ var videos = 1;
 		var divId = stream.streamId;	// Give the replacement div the id of the stream as its id
 		div.setAttribute('id', divId);
 		document.getElementById("videobox").appendChild(div);
-		subscriberObj[stream.streamId] = div; 
+		subscriberObj[stream.streamId] = div;
 		subscribers[stream.streamId] = session.subscribe(stream, divId, {"width": CURRENT_WIDTH, "height": CURRENT_HEIGHT});
 
 		videos++;
