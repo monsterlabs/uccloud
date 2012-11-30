@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require html5shiv
 //= require jquery.maskedinput
 //= require_tree .
 
