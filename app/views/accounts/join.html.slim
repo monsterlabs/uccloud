@@ -4,13 +4,13 @@
 - ostdk = OpenTok::OpenTokSDK.new api_key, api_secret
 
 #users
-  .header Users
+  .header Session Participants
 
 p To join your session click the connect button
 
 #videobox
 
-button#connect Connect
+button#connect CONNECT TO SESSION
 
 javascript:
   var apiKey = #{api_key};
@@ -31,10 +31,10 @@ javascript:
       if (e.target.innerText === "Connect") {
         var token = '#{ostdk.generate_token(session_id: session_id, role: OpenTok::RoleConstants::PUBLISHER, connection_data: "{\"email\": \"#{current_user.email}\"}")}';
         session.connect(apiKey, token);
-        e.target.innerText = "Disconnect";
+        e.target.innerText = "DISCONNECT";
       } else {
         session.disconnect();
-        e.target.innerText = "Connect";
+        e.target.innerText = "CONNECT TO SESSION";
       }
 
     });
