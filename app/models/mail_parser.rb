@@ -12,7 +12,7 @@ class MailParser
 
     new_users = []
 
-    unless EmailAddress.where(email: email.from.first).exists?
+    unless EmailAddress.where(email: mail.from.first).exists?
       new_users << User.create(email: mail.from.first)
     end
 
@@ -36,7 +36,7 @@ class MailParser
     end
 
     users = session.users - new_users
-    user.each do |user|
+    users.each do |user|
       email = RecognizedInvitee.send_invitation(session, user)
       email.deliver
     end

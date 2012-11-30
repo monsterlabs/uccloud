@@ -25,4 +25,5 @@ production:
   pool: 5
   username: uccld
   password: nabla189
+  prepared_statements: false
 #  socket: /tmp/.s.PGSQL.5432
