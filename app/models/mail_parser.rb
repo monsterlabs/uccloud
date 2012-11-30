@@ -9,12 +9,10 @@ class MailParser
     Rails.logger.debug "CC(Account): #{mail.cc}"
     Rails.logger.debug raw
 
-    User.create(email: mail.from.first)
+    User.create(email: mail.from.first) unless EmailAddress.where(email: email.from.first).exists?
 
     mail.to.each do |email|
-      unless User.where(email: email).exists?
-        User.create(email: email)
-      end
+      User.create(email: email) unless EmailAddress.where(email: email).exists?
     end
 
     create_session(mail)
@@ -23,10 +21,10 @@ class MailParser
   def self.create_session(mail)
     host = User.where(email: mail.from).first
     session = Session.create(host_id: host.id, scheduled_session: false, start_datetime: Time.now, end_datetime: Time.now + 2.hours, subject: mail.subject)
-    mail
+
     session.invitees << Invitee.new(host: true, user_id: host.id)
     mail.to.each do |email|
-      user = User.where(email: email).first
+      user = EmailAddress.where(email: email).first.user
       session.users << user
     end
     session.users.each do |user|
