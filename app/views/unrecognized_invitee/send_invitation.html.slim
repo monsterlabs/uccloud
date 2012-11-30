@@ -1,8 +1,6 @@
-p
-  | Congratulations - #{@session.host.email} has invited you to an UC Cloud video collaboration session!
+p <i><strong>Congratulations</strong</i> - #{@session.host.email} has invited you to an UC Cloud video collaboration session!
 
-p
-  | It is scheduled to start #{@session.now? ? 'now' : @session.start_datetime}. You can easily join this session by either:
+p It is scheduled to start #{@session.now? ? 'now' : @session.start_datetime}. You can easily join this session by either:
 
 ol
   li On a personal computer <a href="#{join_accounts_url}">click this link</a> to join from a browser.
