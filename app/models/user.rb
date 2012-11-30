@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   after_create() do
     self.email_addresses.create(email: self.email, primary: true)
+    self.reset_authentication_token!
   end
 
   def encrypted_password

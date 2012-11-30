@@ -41,7 +41,11 @@ var videos = 1;
 		publish();
 
 		for (var i = 0; i < event.streams.length; i++) {
-			addStream(event.streams[i]);
+      var stream = event.streams[i];
+      addStream(stream);
+      var data = $.parseJSON(stream.connection.data);
+
+      $('#users').append('<div class="user">' + data.email + '</div>');
 		}
 	}
 
@@ -59,7 +63,7 @@ var videos = 1;
 	function streamDestroyedHandler(event) {
 		videos--;
     $('#users .user').each(function (user) {
-      
+
     });
 		layoutManager();
 	}
