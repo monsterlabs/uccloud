@@ -4,21 +4,28 @@ class MailParser
 
   def self.perform(raw)
     mail = Mail.new(raw)
+
     Rails.logger.debug "Host: #{mail.from}"
     Rails.logger.debug "Invitees: #{mail.to}"
     Rails.logger.debug "CC(Account): #{mail.cc}"
     Rails.logger.debug raw
 
-    User.create(email: mail.from.first) unless EmailAddress.where(email: email.from.first).exists?
+    new_users = []
 
-    mail.to.each do |email|
-      User.create(email: email) unless EmailAddress.where(email: email).exists?
+    unless EmailAddress.where(email: email.from.first).exists?
+      new_users << User.create(email: mail.from.first)
     end
 
-    create_session(mail)
+    mail.to.each do |email|
+      unless EmailAddress.where(email: email).exists?
+        new_users << User.create(email: email)
+      end
+    end
+
+    create_session(mail, new_users)
   end
 
-  def self.create_session(mail)
+  def self.create_session(mail, new_users)
     host = User.where(email: mail.from).first
     session = Session.create(host_id: host.id, scheduled_session: false, start_datetime: Time.now, end_datetime: Time.now + 2.hours, subject: mail.subject)
 
@@ -27,7 +34,13 @@ class MailParser
       user = EmailAddress.where(email: email).first.user
       session.users << user
     end
-    session.users.each do |user|
+
+    users = session.users - new_users
+    user.each do |user|
+      email = RecognizedInvitee.send_invitation(session, user)
+      email.deliver
+    end
+    new_users.each do |user|
       email = UnrecognizedInvitee.send_invitation(session, user)
       email.deliver
     end
