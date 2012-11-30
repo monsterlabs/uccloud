@@ -2,7 +2,7 @@ Congratulations - <%= @session.host.email %> has invited you to an UC Cloud vide
 
 It is scheduled to start <%= @session.now? ? 'now' : @session.start_datetime %>. You can easily join this session by either:
 
-1. On a personal computer click this link to join from a browser.
+1. On a personal computer click this link to join from a browser <%= "#{new_user_session_url}?auth_token=#{@user.authentication_token}" %>.
 
 2. If you have a standards based video endpoint dial the UC Cloud speed dial (“uccld.com”) and enter your personal access code, which has been temporarily set to <%= @user.user_access_code %>.
 

@@ -58,7 +58,9 @@ var videos = 1;
 
 	function streamDestroyedHandler(event) {
 		videos--;
-
+    $('#users .user').each(function (user) {
+      
+    });
 		layoutManager();
 	}
 

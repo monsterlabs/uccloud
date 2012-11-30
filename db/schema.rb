@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121130060908) do
+ActiveRecord::Schema.define(:version => 20121130180952) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -93,12 +93,13 @@ ActiveRecord::Schema.define(:version => 20121130060908) do
     t.integer  "account_id"
     t.string   "email"
     t.string   "user_access_code"
-    t.boolean  "custom_access_code", :default => false
+    t.boolean  "custom_access_code",   :default => false
     t.string   "display_name"
-    t.string   "time_zone",          :default => "America/Los_Angeles"
-    t.boolean  "host_privileges",    :default => false
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
+    t.string   "time_zone",            :default => "America/Los_Angeles"
+    t.boolean  "host_privileges",      :default => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.string   "authentication_token"
   end
 
   add_index "users", ["account_id"], :name => "index_users_on_account_id"

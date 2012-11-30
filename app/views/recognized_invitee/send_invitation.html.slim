@@ -3,22 +3,22 @@ p <i><strong>Congratulations</strong</i> - #{@session.host.email} has invited yo
 p It is scheduled to start #{@session.now? ? 'now' : @session.start_datetime}. You can easily join this session by either:
 
 ol
-  li On a personal computer <a href="#{join_accounts_url}">click this link</a> to join from a browser.
+  li On a personal computer <a href="#{new_user_session_url}?auth_token=#{@user.authentication_token}">click this link</a> to join from a browser.
   li If you have a <strong>standards based video endpoint</strong> dial the UC Cloud speed dial (“uccld.com”) and enter your personal access code.
   li If you’d like to <strong>simply call into this session</strong> (without video), please dial (408) UCCLOUD (408-822-5683) and enter your personal access code.
 br
 br
 h2 Helpful Links:
-p To customize or reset your personal access code please <a href="#{my_access_code_accounts_url}">click here</a>. (Why is this useful?) 
+p To customize or reset your personal access code please <a href="#{my_access_code_accounts_url}">click here</a>. (Why is this useful?)
 
-p To download a software video endpoint for your PC or tablet please <a href="#">click here</a>. (Why is this useful?)  
+p To download a software video endpoint for your PC or tablet please <a href="#">click here</a>. (Why is this useful?)
 
-p To pre-register an endpoint please <a href="#">click here</a>. (Why is this useful?) 
+p To pre-register an endpoint please <a href="#">click here</a>. (Why is this useful?)
 
 p To schedule your own UC Cloud video collaboration sessions please <a href="#">click here</a> for a free 30 day trial.
 br
 br
 h2 About:
 p UC Cloud provides on-demand enterprise-grade video collaboration, enabling you to painlessly collaborate with anyone, anywhere, anytime.
-p UC Cloud is powered by Polycom, the leading provider of enterprise-grade video collaboration technology.  
+p UC Cloud is powered by Polycom, the leading provider of enterprise-grade video collaboration technology.
 p For more information, please contact us at <a href="mailto:info@uccld.com">info@uccld.com</a>.

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :sessions, :through => :invitees
   attr_accessible :custom_access_code, :display_name, :host_privileges, :time_zone, :user_access_code, :email
 
-  devise :database_authenticatable, :registerable,:encryptable, :encryptor => :plain
+  devise :database_authenticatable, :registerable, :token_authenticatable, :encryptable, :encryptor => :plain
 
   validates_uniqueness_of :email
   validates_uniqueness_of :user_access_code
