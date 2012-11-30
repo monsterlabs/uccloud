@@ -22,6 +22,8 @@ class MailParser
       end
     end
 
+    new_users.each { |u| u.reset_authentication_token! }
+    
     create_session(mail, new_users)
   end
 
