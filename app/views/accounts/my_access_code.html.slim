@@ -2,19 +2,26 @@
   h1 1. Enter your email addresses.
   div.bordered_form
     = form_tag(change_email_accounts_path, method: "post") do
-      table
+      table.emails
         - current_user.email_addresses.each do |email|
           tr
             td = check_box_tag :"emails[]", email.id, false, disabled: email.primary
             td
               = email.email
               - if email.primary
-                b (PRIMARY)
+                b
+                  |  (PRIMARY)
 
-      div
-        = submit_tag "Set as Primary", name: 'primary'
-        = submit_tag "Delete", name: 'delete'
-        = submit_tag "Add new", id: 'new'
+      div.buttons
+        = submit_tag "SET AS PRIMARY", name: 'primary'
+        = submit_tag "DELETE", name: 'delete'
+        = submit_tag "ADD NEW", id: 'new'
+
+  div
+    p Add any email addresses or aliases with which you would like to be reachable for video collaboration sessions.
+    p
+      b Note:
+      | Your email addresses are used only for making video collaboration sessions easier – click to see our privacy policy
 
     #new_email_dialog*{style: "display: none", title: "Add new email"}
       = form_tag(add_email_accounts_path, method: "post") do
@@ -38,13 +45,13 @@
       = f.label :user_access_code, "My access code:"
       = f.text_field :user_access_code
 
-      div
+      div.buttons
         = f.submit "Save & Update"
   div
     | Personal access codes must be 10 digit numbers.
     br
     | Tip: Choose a personal access code that is easy to remember – for example, one of your phone numbers.
-    
+
 javascript:
   $(function() {
     $("#user_user_access_code").mask("999-999-9999")

@@ -1,19 +1,27 @@
-- api_key = '21842452'
-- api_secret = '2c38ad1aef7f2a59876e4cacd0563696dd0dd5c6'
-- session_id = "1_MX4yMTg0MjQ1Mn4xMjcuMC4wLjF-VGh1IE5vdiAyOSAwOToyOToyOSBQU1QgMjAxMn4wLjIyODI5MTIxfg"
-- ostdk = OpenTok::OpenTokSDK.new api_key, api_secret
-
 #users
   .header Session Participants
 
-p To join your session click the connect button
+- if @session
+
+  p To join your session click the connect button
+  if @session.ot_session_id
+    - session_id = @session.ot_session_id
+  else
+    - session_id = "1_MX4yMTg0MjQ1Mn4xMjcuMC4wLjF-VGh1IE5vdiAyOSAwOToyOToyOSBQU1QgMjAxMn4wLjIyODI5MTIxfg"
+  end
+
+- else
+
+  p To join a demo session click the connect button
+
+  - session_id = "1_MX4yMTg0MjQ1Mn4xMjcuMC4wLjF-VGh1IE5vdiAyOSAwOToyOToyOSBQU1QgMjAxMn4wLjIyODI5MTIxfg"
 
 #videobox
 
 button#connect CONNECT TO SESSION
 
 javascript:
-  var apiKey = #{api_key};
+  var apiKey = #{API_KEY};
   var sessionId = "#{session_id}";
 
   var session;
@@ -29,7 +37,8 @@ javascript:
   $(function () {
     $("#connect").click (function (e) {
       if (e.target.innerText === "CONNECT TO SESSION") {
-        var token = '#{ostdk.generate_token(session_id: session_id, role: OpenTok::RoleConstants::PUBLISHER, connection_data: "{\"email\": \"#{current_user.email}\"}")}';
+        //TODO: Generate token with javascript.
+        var token = '#{OTSDK.generate_token(session_id: session_id, role: OpenTok::RoleConstants::PUBLISHER, connection_data: "{\"email\": \"#{current_user.email}\"}")}';
         session.connect(apiKey, token);
         e.target.innerText = "DISCONNECT";
       } else {

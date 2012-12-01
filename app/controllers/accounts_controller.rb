@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
   end
 
   def join
-
+    @session = current_user.sessions.last
   end
 
   def faq
