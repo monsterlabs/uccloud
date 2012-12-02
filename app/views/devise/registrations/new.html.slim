@@ -15,8 +15,6 @@ div.signup_form.bordered_form
   br
   a *{href: "#"} click to see our privacy policy
 
-= link_to "http://localhost:3000#{root_path(:auth_token => User.first.authentication_token)}", root_path(:auth_token => User.first.authentication_token)
-
 javascript:
   $(function() {
     $("#user_user_access_code").mask("999-999-9999")
