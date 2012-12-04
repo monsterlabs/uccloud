@@ -11,6 +11,11 @@ class AccountsController < ApplicationController
 
   def join
     @session = current_user.sessions.last
+    if @session && @session.ot_session_id
+      @session_id = @session.ot_session_id
+    else
+      @session_id = "1_MX4yMTg0MjQ1Mn4xMjcuMC4wLjF-VGh1IE5vdiAyOSAwOToyOToyOSBQU1QgMjAxMn4wLjIyODI5MTIxfg"
+    end
   end
 
   def faq
