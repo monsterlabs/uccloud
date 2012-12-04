@@ -8,4 +8,6 @@ class Session < ActiveRecord::Base
   def now?
     start_datetime <= Time.zone.now
   end
+  
+  # scope :active, :conditions => "start_datetime <= #{30.minutes.ago}"
 end
