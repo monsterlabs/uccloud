@@ -28,7 +28,7 @@ class MailParser
   end
 
   def self.create_session(mail, new_users)
-    host = User.where(email: mail.from.downcase).first
+    host = User.where(email: mail.from.first.downcase).first
     opentok_session_id = OTSDK.create_session("localhost")
     session = Session.create(host_id: host.id, scheduled_session: false, start_datetime: Time.now, end_datetime: Time.now + 2.hours, subject: mail.subject, message_body: mail.body)
 
