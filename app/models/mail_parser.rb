@@ -12,13 +12,13 @@ class MailParser
 
     new_users = []
 
-    unless EmailAddress.where(email: mail.from.first).exists?
-      new_users << User.create(email: mail.from.first)
+    unless EmailAddress.where(email: mail.from.first.downcase).exists?
+      new_users << User.create(email: mail.from.first.downcase)
     end
 
     mail.to.each do |email|
-      unless EmailAddress.where(email: email).exists?
-        new_users << User.create(email: email)
+      unless EmailAddress.where(email: email.downcase).exists?
+        new_users << User.create(email: email.downcase)
       end
     end
 
@@ -28,13 +28,13 @@ class MailParser
   end
 
   def self.create_session(mail, new_users)
-    host = User.where(email: mail.from).first
+    host = User.where(email: mail.from.downcase).first
     opentok_session_id = OTSDK.create_session("localhost")
     session = Session.create(host_id: host.id, scheduled_session: false, start_datetime: Time.now, end_datetime: Time.now + 2.hours, subject: mail.subject, message_body: mail.body)
 
     session.invitees << Invitee.new(host: true, user_id: host.id)
     mail.to.each do |email|
-      user = EmailAddress.where(email: email).first.user
+      user = EmailAddress.where(email: email.downcase).first.user
       session.users << user
     end
 
