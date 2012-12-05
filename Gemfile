@@ -12,6 +12,7 @@ gem 'pg'
 gem 'resque'
 gem 'resque-remote'
 gem 'opentok'
+gem 'ri_cal'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
