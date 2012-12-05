@@ -37,7 +37,7 @@ class MailParser
 
       host = User.where(email: mail.from.first.downcase).first
       ot_session = OTSDK.create_session("localhost")
-      session = Session.create(host_id: host.id, scheduled_session: false, start_datetime: start_datetime, end_datetime: end_datetime, subject: mail.subject, message_body: mail.body, ot_session_id: ot_session.session_id)
+      session = Session.create(host_id: host.id, scheduled_session: true, start_datetime: start_datetime, end_datetime: end_datetime, subject: mail.subject, message_body: mail.body, ot_session_id: ot_session.session_id)
 
       session.invitees << Invitee.new(host: true, user_id: host.id)
       mail.to.each do |email|
