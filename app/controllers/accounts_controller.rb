@@ -10,7 +10,8 @@ class AccountsController < ApplicationController
   end
 
   def join
-    @session = current_user.sessions.last
+    @sessions = current_user.sessions.active
+    @session = @sessions.last
     if @session && @session.ot_session_id
       @session_id = @session.ot_session_id
     else

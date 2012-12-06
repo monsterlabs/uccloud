@@ -1,15 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  account: 
-  host_id: 
+on_demand:
+  account:
+  host_id:
   scheduled_session: false
-  start_datetime: 2012-11-22 10:02:27
+  start_datetime: <%= 6.minutes.ago %>
   end_datetime: 2012-11-22 10:02:27
 
-two:
-  account: 
-  host_id: 
-  scheduled_session: false
-  start_datetime: 2012-11-22 10:02:27
-  end_datetime: 2012-11-22 10:02:27
+scheduled:
+  account:
+  host_id:
+  scheduled_session: true
+  start_datetime: <%= 5.minutes.ago %>
+  end_datetime: <%= 1.hour.from_now %>
+
+later:
+  account:
+  host_id:
+  scheduled_session: true
+  start_datetime: <%= 10.hours.from_now %>
+  end_datetime: <%= 13.hours.from_now %>
+
+old:
+  account:
+  host_id:
+  scheduled_session: true
+  start_datetime: <%= 10.hours.ago %>
+  end_datetime: <%= 13.hours.ago %>

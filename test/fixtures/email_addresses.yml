@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user: 
-  email: MyString
-  primary: false
+  user:
+  email: perengano@foo.com
+  primary: true
 
 two:
-  user: 
-  email: MyString
+  user:
+  email: test@foo.com
   primary: false

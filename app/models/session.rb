@@ -8,6 +8,15 @@ class Session < ActiveRecord::Base
   def now?
     start_datetime <= Time.zone.now
   end
-  
-  # scope :active, :conditions => "start_datetime <= #{30.minutes.ago}"
+
+  scope :scheduled, conditions: {scheduled_session: true}
+  scope :on_demand, conditions: {scheduled_session: false}
+
+  scope :active, (lambda do
+    now = Time.now.utc
+    for_on_demand = "(scheduled_session = 'f' AND start_datetime >= ?)"
+    for_scheduled = "(scheduled_session = 't' AND start_datetime <= ? AND end_datetime >= ?)"
+    {conditions: ["#{for_on_demand} OR #{for_scheduled}", now - 3.hours, now + 30.minutes, now - 1.hour], order: :start_datetime}
+  end)
+
 end
