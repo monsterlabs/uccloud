@@ -28,8 +28,9 @@ class MailParser
   end
 
   def self.create_session(mail, new_users)
-    create_ad_hoc_session(mail, new_user) unless (!mail.attachments.empty? && mail.attachments.first.filename == "invite.ics")
-    calendar = RiCal.parse_string(mail.attachments.first.decoded).first
+    calendar = scheduled_meeting?(mail)
+    create_ad_hoc_session(mail, new_user) unless calendar
+
     if calendar && !calendar.events.empty?
       Rails.logger.debug "Creating scheduled session"
       start_datetime = calendar.events.first.start_time
@@ -55,6 +56,17 @@ class MailParser
         email.deliver
       end
     end
+  end
+
+  def self.scheduled_meeting?(mail)
+    mail.attachments.each do |attm|
+      return RiCal.parse_string(attm.decoded).first if attm.filename == "invite.ics" # Google Calendar Invite
+    end
+    mail.parts.each do |part|
+      return RiCal.parse_string(part.body.decoded).first if part.mime_type == "text/calendar" # MS Outlook Invite
+    end
+
+    nil
   end
 
   def self.create_ad_hoc_session(mail, new_users)
