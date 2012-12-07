@@ -6,6 +6,11 @@ $base-blue: #55a7eb;
 
 body {
   margin: 0px;
+  font-size:100%;
+}
+
+h1 {
+  font-size: 20px;
 }
 
 section.main {
@@ -166,11 +171,11 @@ section.main {
   @include border-radius(5px);
   text-align: center;
   padding: 10px 5px;
-  
+
   .buttons {
     margin-top: 10px;
   }
-  
+
 }
 
 table.emails {
