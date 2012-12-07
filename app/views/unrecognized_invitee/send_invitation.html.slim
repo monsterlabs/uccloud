@@ -1,9 +1,9 @@
 p <i><strong>Congratulations</strong></i> - #{@session.host.email} has invited you to an UC Cloud video collaboration session!
 
-p It is scheduled to start #{@session.now? ? 'now' : @session.start_datetime}. You can easily join this session by either:
+p It is scheduled to start #{@session.now? ? 'now' : l(@session.start_datetime, format: :email)}. You can easily join this session by either:
 
 ol
-  li On a personal computer <a href="#{new_user_session_url}?auth_token=#{@user.authentication_token}">click this link</a> to join from a browser.
+  li <strong>On a personal computer</strong> <a href="#{new_user_session_url}?auth_token=#{@user.authentication_token}">click this link</a> to join from a browser.
   li If you have a <strong>standards based video endpoint</strong> dial the UC Cloud speed dial (“uccld.com”) and enter your personal access code, which has been temporarily set to #{@user.user_access_code}.
   li If you’d like to <strong>simply call into this session</strong> (without video), please dial (408) UCCLOUD (408-822-5683) and enter your personal access code, which has been temporarily set to #{@user.user_access_code}.
 br
